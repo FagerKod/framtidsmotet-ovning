@@ -1,0 +1,343 @@
+/* Anmälningssidan, Framtidsmötet 2026 */
+/* Element-baserad styling. Fungerar oavsett om HTML är div-baserad eller semantisk. */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #1a1a1a;
+  background: #f7f5f2;
+}
+
+/* HEADER */
+header, .site-header {
+  background: #1a2a3a;
+  color: #fff;
+  padding: 1.5rem 2rem;
+}
+
+.header-inner, header > div:first-child {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.logo, header h1, header .logo-text,
+.site-header h1, .site-header .logo-text, .site-header .logo {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  margin: 0;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* NAV */
+nav, .site-nav {
+  margin-left: auto;
+}
+
+nav ul, .site-nav ul, .nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a, .site-nav a, .nav-link {
+  color: #cfd8e0;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+}
+
+nav a:hover, nav a:focus, .nav-link:hover, .nav-link:focus {
+  color: #fff;
+  border-bottom-color: #ff7a00;
+  outline: none;
+}
+
+nav a[aria-current="page"], .nav-link.active {
+  color: #fff;
+  border-bottom-color: #ff7a00;
+}
+
+/* MAIN */
+main, .main-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 3rem;
+}
+
+.content, main > section:first-child, main > div:first-child {
+  min-width: 0;
+}
+
+main h1, .main-wrapper h1, .page-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin: 0 0 0.75rem 0;
+  color: #1a2a3a;
+  line-height: 1.2;
+}
+
+.lede, .ingress {
+  font-size: 1.05rem;
+  color: #4a5562;
+  margin: 0 0 2rem 0;
+}
+
+h2, .section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 1.75rem 0 0.75rem 0;
+  color: #1a2a3a;
+}
+
+/* FORM */
+form, .form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid #e3e0db;
+}
+
+.form-row, .field-group {
+  margin-bottom: 1.25rem;
+}
+
+label, .label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #1a2a3a;
+}
+
+.required-marker, label .req, .label .req {
+  color: #c0392b;
+  margin-left: 0.2rem;
+}
+
+input[type="text"], input[type="email"], input[type="tel"],
+.input-field, [contenteditable="true"].input-field {
+  width: 100%;
+  font: inherit;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #c8c4be;
+  border-radius: 4px;
+  background: #fff;
+  min-height: 2.5rem;
+}
+
+input:focus, .input-field:focus {
+  outline: 3px solid #ff7a00;
+  outline-offset: 1px;
+}
+
+fieldset, .fieldset {
+  border: 1px solid #e3e0db;
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  margin: 0 0 1.25rem 0;
+}
+
+legend, .legend {
+  font-weight: 700;
+  padding: 0 0.5rem;
+  color: #1a2a3a;
+}
+
+.option-row, fieldset > div, .fieldset > div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.4rem 0;
+}
+
+input[type="checkbox"], input[type="radio"], .checkbox, .radio {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+button[type="submit"], .submit-btn {
+  display: inline-block;
+  background: #1a2a3a;
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  padding: 0.85rem 2rem;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: 1rem;
+}
+
+button[type="submit"]:hover, .submit-btn:hover {
+  background: #0f1a26;
+}
+
+button[type="submit"]:focus, .submit-btn:focus {
+  outline: 3px solid #ff7a00;
+  outline-offset: 2px;
+}
+
+/* ASIDE */
+aside, .sidebar {
+  min-width: 0;
+}
+
+.map-placeholder, .map {
+  background: #d9e2e6;
+  border: 1px solid #b8c2c8;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6a7682;
+  font-style: italic;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+.address, .contact-block {
+  background: #fff;
+  padding: 1.25rem;
+  border-radius: 6px;
+  border: 1px solid #e3e0db;
+  margin-bottom: 1.25rem;
+}
+
+.address p, .contact-block p {
+  margin: 0.25rem 0;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-list li, .contact-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0;
+}
+
+.contact-icon {
+  display: inline-flex;
+  width: 1.2rem;
+  height: 1.2rem;
+  color: #ff7a00;
+  flex-shrink: 0;
+}
+
+a, .link-text {
+  color: #1a2a3a;
+  text-decoration: underline;
+  text-decoration-color: #ff7a00;
+  text-underline-offset: 3px;
+}
+
+a:hover, a:focus {
+  text-decoration-thickness: 2px;
+}
+
+/* FOOTER */
+footer, .site-footer {
+  background: #1a2a3a;
+  color: #cfd8e0;
+  padding: 2.5rem 2rem;
+  margin-top: 3rem;
+}
+
+.footer-inner, footer > div:first-child {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+footer .org-block,
+footer .contact-block-foot {
+  flex: 1 1 220px;
+}
+
+footer h2, footer .footer-title {
+  color: #fff;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 0.75rem 0;
+}
+
+footer p {
+  margin: 0.2rem 0;
+  font-size: 0.9rem;
+}
+
+footer a, footer .link-text {
+  color: #cfd8e0;
+  text-decoration-color: #ff7a00;
+}
+
+.social-list, .social-icons {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.social-list a, .social-icons a {
+  display: inline-flex;
+  width: 2.25rem;
+  height: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #ff7a00;
+  color: #fff;
+  text-decoration: none;
+}
+
+.social-list a:focus, .social-icons a:focus {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+.social-list svg, .social-icons svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+/* Visually hidden, för screenreader-text om de behöver lägga till */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
