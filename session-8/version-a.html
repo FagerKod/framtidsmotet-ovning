@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anmälan till Framtidsmötet 2026, session 8, version A</title>
+  <link rel="stylesheet" href="anmalningssidan.css">
+  <style>
+    .villkor-rad { display:flex; flex-wrap:wrap; align-items:center; gap:.5rem 1rem; margin:.4rem 0; }
+    .villkor-rad .option-row { margin:0; }
+    .textknapp { font:inherit; font-weight:600; color:#1a2a3a; background:none; border:0; padding:.6rem .2rem; min-height:44px;
+      text-decoration:underline; text-decoration-color:#ff7a00; text-underline-offset:3px; cursor:pointer; }
+    .textknapp:hover { text-decoration-thickness:2px; }
+    .textknapp:focus-visible, .stang:focus-visible { outline:3px solid #1a2a3a; outline-offset:2px; }
+    .dialog-bakgrund { position:fixed; inset:0; background:rgba(15,26,38,.65); display:flex; align-items:center; justify-content:center; padding:1rem; z-index:10; }
+    .dialog-bakgrund[hidden] { display:none; }
+    .dialog { background:#fff; max-width:36rem; width:100%; border-radius:8px; border-top:6px solid #1a2a3a; padding:1.75rem; position:relative; }
+    .dialog h2 { margin:0 3rem 1rem 0; }
+    .dialog ul { margin:0; padding-left:1.25rem; }
+    .dialog li { margin:.5rem 0; }
+    .stang { position:absolute; top:1rem; right:1rem; width:44px; height:44px; display:flex; align-items:center; justify-content:center;
+      background:#fff; color:#1a2a3a; border:2px solid #1a2a3a; border-radius:4px; cursor:pointer; padding:0; }
+    .stang svg { width:18px; height:18px; }
+    .ovningsetikett { position:fixed; bottom:.5rem; right:.5rem; background:#fff; color:#1a2a3a; border:1px solid #1a2a3a; font-size:.85rem; padding:.2rem .5rem; border-radius:3px; }
+    .map-placeholder { color:#3d4752; }
+    .platskontroll { margin:0 0 1.25rem; }
+    .sekundar { font:inherit; font-weight:600; min-height:44px; padding:.5rem 1rem; background:#fff; color:#1a2a3a; border:2px solid #1a2a3a; border-radius:4px; cursor:pointer; }
+    .sekundar:hover { background:#eef1f4; }
+    .sekundar:focus-visible { outline:3px solid #1a2a3a; outline-offset:2px; }
+    #platsbesked { margin:.6rem 0 0; font-weight:600; }
+    #platsbesked { min-height:1.6em; }
+    .bekraftelse { background:#fff; padding:2rem; border-radius:8px; border:1px solid #e3e0db; border-top:6px solid #1a2a3a; }
+    .bekraftelse h2 { margin-top:0; font-size:1.6rem; }
+    .bekraftelse h2:focus { outline:3px solid #1a2a3a; outline-offset:4px; }
+  </style>
+</head>
+<body>
+<div id="sida">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="logo">FRAMTIDSMÖTET 2026</a>
+
+      <nav aria-label="Huvudnavigation">
+        <ul class="nav-list">
+          <li><a href="#program" class="nav-link">Program</a></li>
+          <li><a href="#talare" class="nav-link">Talare</a></li>
+          <li><a href="#anmalan" class="nav-link" aria-current="page">Anmälan</a></li>
+          <li><a href="#praktiskt" class="nav-link">Praktiskt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-wrapper">
+
+    <section class="content">
+      <p class="ovningsetikett">Session 8, version A</p>
+      <h1>Anmäl dig senast 1 oktober</h1>
+      <p class="lede">
+        Anmälan till Framtidsmötet 2026, en heldag om hur vi bygger digitala
+        tjänster som håller. Antalet platser är begränsat.
+      </p>
+      <form action="#" method="post" novalidate>
+
+        <p><span aria-hidden="true">*</span> markerar obligatoriska fält</p>
+
+        <div class="form-row">
+          <label for="fornamn">Förnamn <span class="req" aria-hidden="true">*</span></label>
+          <input type="text" id="fornamn" name="fornamn" required autocomplete="given-name" aria-required="true">
+        </div>
+
+        <div class="form-row">
+          <label for="efternamn">Efternamn <span class="req" aria-hidden="true">*</span></label>
+          <input type="text" id="efternamn" name="efternamn" required autocomplete="family-name" aria-required="true">
+        </div>
+
+        <div class="form-row">
+          <label for="epost">E-post <span class="req" aria-hidden="true">*</span></label>
+          <input type="email" id="epost" name="epost" required autocomplete="email" aria-required="true">
+        </div>
+
+        <div class="form-row">
+          <label for="organisation">Organisation</label>
+          <input type="text" id="organisation" name="organisation" autocomplete="organization">
+        </div>
+
+        <div class="form-row">
+          <label for="roll">Roll</label>
+          <input type="text" id="roll" name="roll" autocomplete="organization-title">
+        </div>
+        <fieldset>
+          <legend>Specialkost</legend>
+          <div class="option-row">
+            <input type="checkbox" id="kost-veg" name="kost" value="vegetarisk">
+            <label for="kost-veg">Vegetarisk</label>
+          </div>
+          <div class="option-row">
+            <input type="checkbox" id="kost-vegan" name="kost" value="vegansk">
+            <label for="kost-vegan">Vegansk</label>
+          </div>
+          <div class="option-row">
+            <input type="checkbox" id="kost-laktos" name="kost" value="laktosfri">
+            <label for="kost-laktos">Laktosfri</label>
+          </div>
+          <div class="option-row">
+            <input type="checkbox" id="kost-gluten" name="kost" value="glutenfri">
+            <label for="kost-gluten">Glutenfri</label>
+          </div>
+          <div class="option-row">
+            <input type="checkbox" id="kost-ingen" name="kost" value="ingen">
+            <label for="kost-ingen">Ingen specialkost</label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Välj workshop <span class="req" aria-hidden="true">*</span></legend>
+          <div class="option-row">
+            <input type="radio" id="ws-a" name="workshop" value="a" required>
+            <label for="ws-a">A. Tillgänglig design från start</label>
+          </div>
+          <div class="option-row">
+            <input type="radio" id="ws-b" name="workshop" value="b" required>
+            <label for="ws-b">B. Skärmläsartestning i praktiken</label>
+          </div>
+          <div class="option-row">
+            <input type="radio" id="ws-c" name="workshop" value="c" required>
+            <label for="ws-c">C. Semantik som strategi</label>
+          </div>
+        </fieldset>
+
+        <div class="platskontroll">
+          <button type="button" class="sekundar" id="kontrollera">Kontrollera lediga platser</button>
+          <p id="platsbesked"></p>
+        </div>
+
+        <div id="foljdfraga" hidden>
+          <fieldset>
+            <legend>Hur van är du vid ämnet?</legend>
+            <div class="option-row">
+              <input type="radio" id="erf-ny" name="erfarenhet" value="ny">
+              <label for="erf-ny">Ny inom ämnet</label>
+            </div>
+            <div class="option-row">
+              <input type="radio" id="erf-viss" name="erfarenhet" value="viss">
+              <label for="erf-viss">Viss erfarenhet</label>
+            </div>
+            <div class="option-row">
+              <input type="radio" id="erf-van" name="erfarenhet" value="van">
+              <label for="erf-van">Van</label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="villkor-rad">
+          <div class="option-row">
+            <input type="checkbox" id="villkor" name="villkor" required>
+            <label for="villkor">Jag godkänner villkoren <span class="req" aria-hidden="true">*</span></label>
+          </div>
+          <button type="button" class="textknapp" id="visa-villkor">Läs villkoren</button>
+        </div>
+
+        <button type="submit">Anmäl mig</button>
+      </form>
+
+      <div id="bekraftelse" class="bekraftelse" hidden>
+        <h2 id="bekraftelse-rubrik">Tack, du är anmäld!</h2>
+        <p>Vi har tagit emot din anmälan till Framtidsmötet 2026 den 15 oktober.</p>
+        <p id="bekraftelse-workshop"></p>
+        <p>En bekräftelse skickas till den e-postadress du angav.</p>
+      </div>
+    </section>
+
+    <aside class="sidebar" aria-label="Plats och kontakt">
+      <h2>Så hittar du hit</h2>
+      <a href="https://www.google.com/maps/place/M%C3%BCnchenbryggeriet" class="map-link">
+        <div class="map-placeholder" aria-hidden="true">[Karta]</div>
+        <span class="sr-only">Visa Münchenbryggeriet på karta i Google Maps</span>
+      </a>
+
+      <div class="address">
+        <p><strong>Münchenbryggeriet</strong></p>
+        <p>Torkel Knutssonsgatan 2</p>
+        <p>118 25 Stockholm</p>
+      </div>
+
+      <h2>Kontakt</h2>
+      <div class="contact-block">
+        <ul class="contact-list">
+          <li class="contact-row">
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.05-.24 11.36 11.36 0 003.55.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.55 1 1 0 01-.24 1.05z"/></svg>
+            </span>
+            <a href="tel:+46812345 67">08-123 45 67</a>
+          </li>
+          <li class="contact-row">
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5z"/></svg>
+            </span>
+            <a href="mailto:kontakt@framtidsmotet.se">kontakt@framtidsmotet.se</a>
+          </li>
+          <li class="contact-row">
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 6h-2.95a15.65 15.65 0 00-1.38-3.56A8.03 8.03 0 0118.92 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14a7.82 7.82 0 010-4h3.38a16.57 16.57 0 000 4H4.26zm.81 2h2.95c.32 1.25.78 2.45 1.38 3.56A7.99 7.99 0 015.07 16zm2.95-8H5.07a7.99 7.99 0 014.33-3.56A15.65 15.65 0 008.02 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66a14.78 14.78 0 010-4h4.68a14.78 14.78 0 010 4zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a7.99 7.99 0 01-4.33 3.56zM16.36 14a16.57 16.57 0 000-4h3.38a7.82 7.82 0 010 4h-3.38z"/></svg>
+            </span>
+            <a href="https://framtidsmotet.se">framtidsmotet.se</a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="org-block">
+        <h2 class="footer-title">Arrangör</h2>
+        <p>Framtidsmötet 2026</p>
+        <p>Münchenbryggeriet, Stockholm</p>
+        <p>15 oktober 2026, 08:30 - 17:30</p>
+      </div>
+
+      <div class="contact-block-foot">
+        <h2 class="footer-title">Kontakt</h2>
+        <p><a href="mailto:kontakt@framtidsmotet.se">kontakt@framtidsmotet.se</a></p>
+        <p><a href="tel:+46812345 67">08-123 45 67</a></p>
+        <p><a href="https://framtidsmotet.se">framtidsmotet.se</a></p>
+      </div>
+
+      <div class="social-block">
+        <h2 class="footer-title">Följ oss</h2>
+        <ul class="social-list">
+          <li>
+            <a href="https://linkedin.com/company/framtidsmotet" aria-label="Framtidsmötet på LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM8.34 17.5H5.67V10h2.67v7.5zM7 8.83a1.55 1.55 0 110-3.1 1.55 1.55 0 010 3.1zM18.34 17.5h-2.67v-3.66c0-.87-.02-2-1.21-2-1.22 0-1.4.95-1.4 1.93v3.73h-2.67V10h2.56v1.03h.04a2.81 2.81 0 012.53-1.39c2.7 0 3.2 1.78 3.2 4.1v3.76z"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://bsky.app/profile/framtidsmotet" aria-label="Framtidsmötet på Bluesky">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 11c-1.5-3-5-7-8-7-2 0-2 2-2 3v8c0 2 2 3 4 3 1.5 0 3-1 4-2 0 1-1 4-2 5h8c-1-1-2-4-2-5 1 1 2.5 2 4 2 2 0 4-1 4-3V7c0-1 0-3-2-3-3 0-6.5 4-8 7z"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://mastodon.social/@framtidsmotet" aria-label="Framtidsmötet på Mastodon">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.58 8.21c0-4.7-3.08-6.08-3.08-6.08C16.95 1.41 14.34 1.07 11.62 1.05h-.06c-2.72.02-5.32.36-6.88 1.08 0 0-3.08 1.38-3.08 6.08 0 1.07-.02 2.36.02 3.72.13 4.59.86 9.11 5.1 10.24 1.95.52 3.63.63 4.99.55 2.46-.14 3.84-.88 3.84-.88l-.08-1.78s-1.76.55-3.74.49c-1.96-.07-4.03-.21-4.35-2.62a4.94 4.94 0 01-.04-.67s1.93.47 4.36.58c1.49.07 2.88-.09 4.3-.26 2.71-.32 5.07-1.99 5.37-3.51.47-2.4.43-5.86.43-5.86zm-3.21 5.36h-2v-4.9c0-1.03-.43-1.55-1.3-1.55-.96 0-1.45.62-1.45 1.86v2.69h-1.99V8.99c0-1.24-.49-1.86-1.45-1.86-.87 0-1.3.52-1.3 1.55v4.9h-2V8.84c0-1.03.26-1.85.79-2.46.54-.61 1.25-.92 2.13-.92 1.02 0 1.79.39 2.3 1.18l.5.83.5-.83c.51-.79 1.28-1.18 2.3-1.18.88 0 1.59.31 2.13.92.53.61.79 1.43.79 2.46v4.73z"/></svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+  <div class="dialog-bakgrund" id="villkor-bakgrund" hidden>
+    <div class="dialog" id="villkor-dialog" role="dialog" aria-modal="true" aria-labelledby="villkor-rubrik">
+      <button type="button" class="stang" id="stang-villkor" aria-label="Stäng"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M3 3 17 17M17 3 3 17" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></button>
+      <h2 id="villkor-rubrik">Villkor för anmälan</h2>
+      <ul>
+        <li>Anmälan är bindande efter 1 oktober.</li>
+        <li>Avbokning ska ske senast T-14 enligt punkt 4.2.</li>
+        <li>Du kan låta en kollega ta din plats.</li>
+        <li>Vi sparar dina uppgifter till och med 31 december 2026.</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <script>
+    (function () {
+      var sida = document.getElementById('sida');
+      var oppna = document.getElementById('visa-villkor');
+      var bakgrund = document.getElementById('villkor-bakgrund');
+      var stang = document.getElementById('stang-villkor');
+
+      function oppnaVillkor() {
+        bakgrund.hidden = false;
+        sida.inert = true;
+        stang.focus();
+      }
+
+      function stangVillkor() {
+        bakgrund.hidden = true;
+        sida.inert = false;
+        oppna.focus();
+      }
+
+      oppna.addEventListener('click', oppnaVillkor);
+      stang.addEventListener('click', stangVillkor);
+      bakgrund.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+          stangVillkor();
+        } else if (event.key === 'Tab') {
+          event.preventDefault();
+          stang.focus();
+        }
+      });
+    })();
+  </script>
+  <script>
+    (function () {
+      var platser = { a: ['A', 'Tillgänglig design från start', 12], b: ['B', 'Skärmläsartestning i praktiken', 3], c: ['C', 'Semantik som strategi', 0] };
+      var form = document.querySelector('form');
+      var besked = document.getElementById('platsbesked');
+      var foljd = document.getElementById('foljdfraga');
+      var bekraftelse = document.getElementById('bekraftelse');
+      var rubrik = document.getElementById('bekraftelse-rubrik');
+      function valdWorkshop() {
+        var v = form.querySelector('input[name="workshop"]:checked');
+        return v ? v.value : null;
+      }
+
+      form.querySelectorAll('input[name="workshop"]').forEach(function (r) {
+        r.addEventListener('change', function () { foljd.hidden = false; });
+      });
+      document.getElementById('kontrollera').addEventListener('click', function () {
+        var v = valdWorkshop();
+        if (!v) { besked.textContent = 'Välj en workshop först.'; return; }
+        var p = platser[v];
+        besked.textContent = p[2] > 0 ? p[2] + ' platser kvar på workshop ' + p[0] + '.' : 'Workshop ' + p[0] + ' är fullbokad. Välj en annan workshop.';
+      });
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var v = valdWorkshop();
+        document.getElementById('bekraftelse-workshop').textContent = v ? 'Din workshop: ' + platser[v][0] + '. ' + platser[v][1] + '.' : '';
+        form.hidden = true;
+        bekraftelse.hidden = false;
+      });
+    })();
+  </script>
+</body>
+</html>
